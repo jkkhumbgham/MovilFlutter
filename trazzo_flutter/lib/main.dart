@@ -7,6 +7,7 @@ import 'package:trazzo_flutter/Screens/publicaciones_guardadas_screen.dart';
 import 'package:trazzo_flutter/Screens/crear_editar_comment_screen.dart';
 
 void main() {
+  print('Iniciando en PublicacionesGuardadasScreen');
   runApp(const MainApp());
 }
 
@@ -23,11 +24,15 @@ class MainApp extends StatelessWidget {
           useMaterial3: true,
           colorSchemeSeed: Colors.deepPurple,
         ),
-        home: PrincipalScreen(),
-      //home: const IniciarSesionScreen(),
-      //home: const RegisterScreen(),
-      //home: const PublicacionesGuardadasScreen(),
-      //home: const CrearEditarCommentScreen(),
+      //home: PrincipalScreen(),
+      //home: IniciarSesionScreen(),
+      //home: RegisterScreen(),
+      home: PublicacionesGuardadasScreen(),
+      /*
+      home: CrearEditarCommentScreen(
+        obraId: "obra_prueba",
+      ),
+      */
     );
   }
 }

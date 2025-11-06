@@ -6,8 +6,9 @@ class Obra {
   final String obraId;
   final String titulo;
   final String descripcion;
+  final String imagen;
 
-  Obra({required this.obraId, required this.titulo, required this.descripcion});
+  Obra({required this.obraId, required this.titulo, required this.descripcion, required this.imagen});
 }
 
 // Estado
@@ -28,11 +29,13 @@ class PublicacionesGuardadasState extends ChangeNotifier {
           obraId: '1',
           titulo: 'Origami de grulla',
           descripcion: 'Una pieza tradicional japonesa.',
+          imagen: 'assets/images/obra1.jpg',
         ),
         Obra(
           obraId: '2',
           titulo: 'Escultura moderna',
           descripcion: 'Obra contemporánea en metal.',
+          imagen: 'assets/images/obra2.jpg',
         ),
       ];
 
@@ -174,18 +177,48 @@ class TarjetaPublicacion extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 3,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: ListTile(
-        title: Text(
-          obra.titulo,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+              child: Image.asset(
+                obra.imagen,
+                height: 180,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    obra.titulo,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    obra.descripcion,
+                    style: const TextStyle(fontSize: 14, color: Colors.black87),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
-        subtitle: Text(obra.descripcion),
-        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-        onTap: onTap,
       ),
     );
   }
 }
+

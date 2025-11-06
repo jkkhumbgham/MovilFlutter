@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import '../utils/util.dart';
 
-class CrearEditarComment extends StatefulWidget {
+class CrearEditarCommentScreen extends StatefulWidget {
   final String? id;
   final String obraId;
   final String? responseId;
 
-  const CrearEditarComment({
+  const CrearEditarCommentScreen({
     super.key,
     this.id,
     required this.obraId,
@@ -14,10 +14,10 @@ class CrearEditarComment extends StatefulWidget {
   });
 
   @override
-  State<CrearEditarComment> createState() => _CrearEditarCommentState();
+  State<CrearEditarCommentScreen> createState() => _CrearEditarCommentScreenState();
 }
 
-class _CrearEditarCommentState extends State<CrearEditarComment> {
+class _CrearEditarCommentScreenState extends State<CrearEditarCommentScreen> {
   final Color fondo = const Color(0xFFF9FAFB);
   final Color verde = const Color(0xFF10C377);
   final Color grisOscuro = const Color(0xFF2C2C2C);
