@@ -18,21 +18,12 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       //home: PrincipalScreen(),
-        debugShowCheckedModeBanner: false,
-        title: 'Trazzo',
-        theme: ThemeData(
-          useMaterial3: true,
-          colorSchemeSeed: Colors.deepPurple,
-        ),
-      //home: PrincipalScreen(),
-      //home: IniciarSesionScreen(),
+      //home: IniciarSesion(),
       //home: RegisterScreen(),
       home: PublicacionesGuardadasScreen(),
-      /*
-      home: CrearEditarCommentScreen(
-        obraId: "obra_prueba",
-      ),
-      */
+      
+      //home: CrearEditarCommentScreen(obraId: "obra_prueba",),
+      //home: HomeScreen(),
     );
   }
 }
