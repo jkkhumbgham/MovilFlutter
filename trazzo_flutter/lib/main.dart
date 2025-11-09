@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+
+import 'package:trazzo_flutter/Screens/subir_obra/subir_obra_screen.dart';
+import 'package:trazzo_flutter/Screens/trending/trending_screen.dart';
+
 import 'package:trazzo_flutter/Screens/home_screen.dart';
 import 'package:trazzo_flutter/Screens/iniciar_sesion.dart';
 import 'package:trazzo_flutter/Screens/principal_screen.dart';
@@ -27,12 +31,15 @@ class MainApp extends StatelessWidget {
       //home: PrincipalScreen(),
       //home: IniciarSesionScreen(),
       //home: RegisterScreen(),
-      home: PublicacionesGuardadasScreen(),
+      //home: PublicacionesGuardadasScreen(),
       /*
       home: CrearEditarCommentScreen(
         obraId: "obra_prueba",
       ),
       */
+      //home: const SubirObraScreen(),
+      home: const TrendingScreen(),
+
     );
   }
 }
