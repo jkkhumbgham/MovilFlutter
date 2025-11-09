@@ -12,10 +12,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: fondo,
-      appBar: AppBar(
-        backgroundColor: verde,
-        title: const Text('Trazzo'),
-      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),

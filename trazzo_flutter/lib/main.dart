@@ -22,15 +22,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       //home: PrincipalScreen(),
-        debugShowCheckedModeBanner: false,
-        title: 'Trazzo',
-        theme: ThemeData(
-          useMaterial3: true,
-          colorSchemeSeed: Colors.deepPurple,
-        ),
-      //home: PrincipalScreen(),
-      //home: IniciarSesionScreen(),
+      //home: IniciarSesion(),
       //home: RegisterScreen(),
+
       //home: PublicacionesGuardadasScreen(),
       /*
       home: CrearEditarCommentScreen(
@@ -39,6 +33,9 @@ class MainApp extends StatelessWidget {
       */
       //home: const SubirObraScreen(),
       home: const TrendingScreen(),
+
+
+      //home: HomeScreen(),
 
     );
   }
