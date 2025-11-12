@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../utils/util.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -32,7 +33,7 @@ class HomeScreen extends StatelessWidget {
               BotonApp(
                 texto: 'Iniciar sesión',
                 onPressed: () {
-                  
+                  context.push('/login');
                 },
                 backgroundColor: verde,
                 textStyle: const TextStyle(
@@ -43,7 +44,7 @@ class HomeScreen extends StatelessWidget {
               BotonApp(
                 texto: 'Crear cuenta',
                 onPressed: () {
-                  
+                  context.push('/register');
                 },
                 backgroundColor: const Color(0xFF14D487),
                 textStyle: const TextStyle(

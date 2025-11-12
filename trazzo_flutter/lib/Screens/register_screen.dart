@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../utils/util.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -230,7 +231,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
              
               BotonApp(
                 texto: 'Crear mi cuenta',
-                onPressed: () => {},
+                onPressed: () => {
+                  context.push('/login')
+                },
                 backgroundColor: verde,
                 textStyle: const TextStyle(
                   color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700,

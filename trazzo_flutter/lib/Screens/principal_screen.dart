@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../utils/util.dart';
 
 /// ===== Modelo =====
@@ -100,6 +101,7 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
       backgroundColor: fondo,
       appBar: _barraSuperior(),
       body: _cuerpo(),
+      bottomNavigationBar: _barraInferior(),
     );
   }
 
@@ -116,7 +118,50 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
     );
   }
 
-  
+  BottomAppBar _barraInferior() {
+    return BottomAppBar(
+      color: Colors.white,
+      elevation: 8,
+      shape: const CircularNotchedRectangle(),
+      notchMargin: 6,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {
+                context.push('/main');
+              },
+              icon: Icon(Icons.home_outlined, color: grisOscuro),
+              tooltip: 'Inicio',
+            ),
+            IconButton(
+              onPressed: () {
+                context.push('/saved_posts');
+              },
+              icon: Icon(Icons.bookmark_border, color: grisOscuro),
+              tooltip: 'Guardados',
+            ),
+            IconButton(
+              onPressed: () {
+                context.push('/upload_art');
+              },
+              icon: Icon(Icons.add_a_photo_outlined, color: grisOscuro),
+              tooltip: 'Subir obra',
+            ),
+            IconButton(
+              onPressed: () {
+                context.push('/trending');
+              },
+              icon: Icon(Icons.trending_up_outlined, color: grisOscuro),
+              tooltip: 'Tendencias',
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   Widget _cuerpo() {
     if (isLoading) {
@@ -179,6 +224,10 @@ class _PrincipalScreenState extends State<PrincipalScreen> {
                 acento: verde,
                 textoFuerte: grisOscuro,
                 textoSuave: grisMedio,
+                onObraCommentPressed: () {
+                  // Navegar a la pantalla de comentarios
+                  context.push('/comment/${obra.obraId}');
+                },
               );
             },
           ),
@@ -200,11 +249,13 @@ class TarjetaPublicacion extends StatelessWidget {
     required this.acento,
     required this.textoFuerte,
     required this.textoSuave,
+    required this.onObraCommentPressed,
   });
 
   final Obra obra;
   final VoidCallback onObraPressed;
   final VoidCallback onPerfilPressed;
+  final VoidCallback onObraCommentPressed;
 
   final Color cardBg;
   final Color shadow;
@@ -302,12 +353,14 @@ class TarjetaPublicacion extends StatelessWidget {
                     icon: Icons.thumb_up_alt_outlined,
                     texto: '0',
                     color: textoSuave,
+                    onPressed: () {},
                   ),
                   const SizedBox(width: 12),
                   _AccionIcono(
                     icon: Icons.chat_bubble_outline,
                     texto: '0',
                     color: textoSuave,
+                    onPressed: onObraCommentPressed,
                   ),
                   const Spacer(),
                   IconButton(
@@ -338,18 +391,20 @@ class _AccionIcono extends StatelessWidget {
     required this.icon,
     required this.texto,
     required this.color,
+    required this.onPressed,
   });
 
   final IconData icon;
   final String texto;
   final Color color;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {onPressed();},
           icon: Icon(icon, color: color),
           constraints: const BoxConstraints(),
           padding: EdgeInsets.zero,
