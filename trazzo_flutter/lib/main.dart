@@ -4,7 +4,7 @@ import 'package:trazzo_flutter/Screens/subir_obra/subir_obra_screen.dart';
 import 'package:trazzo_flutter/Screens/trending/trending_screen.dart';
 
 import 'package:trazzo_flutter/Screens/home_screen.dart';
-import 'package:trazzo_flutter/Screens/iniciar_sesion.dart';
+import 'package:trazzo_flutter/Screens/sign_in/iniciar_sesion.dart';
 import 'package:trazzo_flutter/Screens/principal_screen.dart';
 import 'package:trazzo_flutter/Screens/register_screen.dart';
 import 'package:trazzo_flutter/Screens/publicaciones_guardadas_screen.dart';
