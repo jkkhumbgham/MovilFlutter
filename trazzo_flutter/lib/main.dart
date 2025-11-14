@@ -26,13 +26,12 @@ class MainApp extends StatelessWidget {
       //home: RegisterScreen(),
 
       //home: PublicacionesGuardadasScreen(),
-      /*
+      
       home: CrearEditarCommentScreen(
         obraId: "obra_prueba",
-      ),
-      */
+ ),
       //home: const SubirObraScreen(),
-      home: const TrendingScreen(),
+      //home: const TrendingScreen(),
 
 
       //home: HomeScreen(),

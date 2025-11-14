@@ -14,7 +14,8 @@ class CrearEditarCommentScreen extends StatefulWidget {
   });
 
   @override
-  State<CrearEditarCommentScreen> createState() => _CrearEditarCommentScreenState();
+  State<CrearEditarCommentScreen> createState() =>
+      _CrearEditarCommentScreenState();
 }
 
 class _CrearEditarCommentScreenState extends State<CrearEditarCommentScreen> {
@@ -23,26 +24,19 @@ class _CrearEditarCommentScreenState extends State<CrearEditarCommentScreen> {
   final Color grisOscuro = const Color(0xFF2C2C2C);
   final Color grisMedio = const Color(0xFF7A7A7A);
 
-  final comentarioCtrl = TextEditingController();
+  String comentario = "";
   double calificacion = 3.0;
   String error = "";
-
-  @override
-  void dispose() {
-    comentarioCtrl.dispose();
-    super.dispose();
-  }
 
   void publicar() {
     setState(() => error = "");
 
-    if (comentarioCtrl.text.trim().isEmpty) {
+    if (comentario.trim().isEmpty) {
       setState(() => error = "Por favor escribe un comentario");
       return;
     }
 
-    //Simulación de envío
-    debugPrint("Comentario: ${comentarioCtrl.text}");
+    debugPrint("Comentario: $comentario");
     debugPrint("Calificación: $calificacion");
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -50,7 +44,8 @@ class _CrearEditarCommentScreenState extends State<CrearEditarCommentScreen> {
         content: const Text("Comentario enviado correctamente"),
         backgroundColor: verde,
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
@@ -73,12 +68,11 @@ class _CrearEditarCommentScreenState extends State<CrearEditarCommentScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            //Campo del comentario
+            
             CampoIconoEtiqueta(
               icono: Icons.edit,
               etiqueta: "Deja tu comentario aquí",
               hint: "Deja al autor conocer tu opinión",
-              controller: comentarioCtrl,
               iconColor: grisOscuro,
               labelStyle: TextStyle(
                 fontSize: 16,
@@ -106,11 +100,14 @@ class _CrearEditarCommentScreenState extends State<CrearEditarCommentScreen> {
                   borderSide: BorderSide(color: verde, width: 1.5),
                 ),
               ),
+              onChanged: (value) {
+                setState(() => comentario = value);
+              },
             ),
 
             const SizedBox(height: 40),
 
-            //Calificación
+          
             Text(
               "Calificación: ${calificacion.toStringAsFixed(1)}",
               style: TextStyle(
@@ -119,21 +116,25 @@ class _CrearEditarCommentScreenState extends State<CrearEditarCommentScreen> {
                 color: grisOscuro,
               ),
             ),
+
             SliderTheme(
               data: SliderTheme.of(context).copyWith(
                 activeTrackColor: verde,
                 inactiveTrackColor: verde.withOpacity(0.3),
                 thumbColor: verde,
                 overlayColor: verde.withOpacity(0.1),
-                thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8),
+                thumbShape:
+                    const RoundSliderThumbShape(enabledThumbRadius: 8),
               ),
               child: Slider(
                 value: calificacion,
-                onChanged: (v) => setState(() => calificacion = (v * 2).round() / 2),
                 min: 0,
                 max: 5,
                 divisions: 10,
                 label: calificacion.toStringAsFixed(1),
+                onChanged: (v) {
+                  setState(() => calificacion = v);
+                },
               ),
             ),
 
@@ -151,7 +152,7 @@ class _CrearEditarCommentScreenState extends State<CrearEditarCommentScreen> {
 
             const SizedBox(height: 40),
 
-            // Botones
+            
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
