@@ -52,6 +52,7 @@ class _CrearEditarCommentScreenState extends State<CrearEditarCommentScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("Obra ID: ${widget.obraId}");
     return Scaffold(
       backgroundColor: fondo,
       appBar: AppBar(
